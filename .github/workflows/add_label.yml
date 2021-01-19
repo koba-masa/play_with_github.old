@@ -4,3 +4,11 @@ on:
     types: [opened, reopened]
     paths:
       - 'tmp/*'
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/labeler@v2
+        with:
+          repo-token: "${{ secrets.add_label }}"
