@@ -1,0 +1,6 @@
+name: add label when added specified file
+on:
+  pull_requests:
+    types: [opened, reopened]
+    paths:
+      - 'tmp/*'
