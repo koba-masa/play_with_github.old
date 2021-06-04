@@ -1,0 +1,46 @@
+name: github_actions_with_docker
+
+on:
+  push:
+    branches:
+      - feat/*
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    env:
+      RAILS_ENV: test
+
+    networks:
+      app_net:
+        name: new_network
+        ipam:
+          config:
+            - subnet: 192.168.44.0/24
+
+    services:
+      db:
+        image: mysql:5.7
+        ports:
+          - 3306:3306
+        env:
+          LANG: "ja_JP.UTF-8"
+          MYSQL_DATABASE: github_actions_with_docker
+          MYSQL_USER: github_actions_with_docker
+          MYSQL_PASSWORD: dfadfadfafafafdafasfas
+          MYSQL_ROOT_PASSWORD: dfadfadfafafafdafasfas
+        command: mysqld --sql_mode=""
+        networks:
+          new_network:
+            ipv4_address: 192.168.44.2
+
+    steps:
+      # 該当のブランチをチェックアウト
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # SQLの実行
+      - name: Exec SQL
+        working-directory: ./github_actions_with_docker
+        run: mysql -h 192.168.44.2 -u github_actions_with_docker -pdfadfadfafafafdafasfas -D github_actions_with_docker -e "SELECT now();"
