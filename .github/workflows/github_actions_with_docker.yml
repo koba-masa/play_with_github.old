@@ -23,8 +23,6 @@ jobs:
           MYSQL_USER: github_actions_with_docker
           MYSQL_PASSWORD: dfadfadfafafafdafasfas
           MYSQL_ROOT_PASSWORD: dfadfadfafafafdafasfas
-        options:
-          --ip: 192.168.44.2
 
     steps:
       # 該当のブランチをチェックアウト
