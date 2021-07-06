@@ -1,0 +1,7 @@
+remote:
+  dest:
+  src:
+local_repository:
+  path:
+target:
+  branch:
