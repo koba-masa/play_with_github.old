@@ -2,8 +2,9 @@ require 'git'
 require 'logger'
 require 'config'
 
-def main()
-  Config.load_and_set_settings("config.yml")
+def main(config)
+  Config.load_and_set_settings(config)
+
   local_repo_dir = Settings.local_repository.path
 
   base = Git::Base.open(local_repo_dir)
@@ -71,4 +72,4 @@ def branch_list(branches)
   end
 end
 
-main()
+main(ARGV[0])
