@@ -1,0 +1,21 @@
+name: Create PullRequest by GitHub Actions.
+on:
+  workflow_dispatch:
+    inputs:
+      branch_name:
+        description: 'Original branch name. If not exists, create it as a new branch.'
+        required: true
+      base_branch_name:
+        description: 'Base branch name.'
+        required: true
+        default: 'main'
+
+jobs:
+  create_pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check input variables
+        run:
+          echo "branch_name: ${{ github.event.inputs.branch_name }}"
+          echo "base_branch_name: ${{ github.event.inputs.base_branch_name }}"
