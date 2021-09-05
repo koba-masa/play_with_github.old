@@ -16,6 +16,6 @@ jobs:
 
     steps:
       - name: Check input variables
-        run:
+        run: |
           echo "branch_name: ${{ github.event.inputs.branch_name }}"
           echo "base_branch_name: ${{ github.event.inputs.base_branch_name }}"
