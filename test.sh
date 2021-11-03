@@ -1,1 +1,1 @@
-i#!/bin/sh
+#!/bin/sh
