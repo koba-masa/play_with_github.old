@@ -1,0 +1,22 @@
+name: Test choice
+
+on:
+  workflow_dispatch:
+    inputs:
+      in_value:
+        # https://github.blog/changelog/2021-11-10-github-actions-input-types-for-manual-workflows/
+        type: choice
+        options:
+          - hoge
+          - fuga
+jobs:
+  say_hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "User: ${USER}"
+          echo "Input Value: ${IN_VALUE}"
+        env:
+          IN_VALUE: ${{ github.event.inputs.in_value }}
+          # https://docs.github.com/ja/actions/learn-github-actions/contexts#github-context
+          USER: ${{ github.actor }}
