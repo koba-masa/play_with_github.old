@@ -1,0 +1,10 @@
+pull_request_creator:
+  base_branch: main
+  repositories:
+    - https://github.com/koba-masa/play_with_github
+  release:
+    type: normal
+#    type: emergency
+#    type: monthly
+    date: 2022/02/09
+    time: 15:00
