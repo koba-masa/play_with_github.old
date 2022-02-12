@@ -1,0 +1,28 @@
+## 概要
+- <%= paramters[:type_name] %>リリース
+
+### リリースタグ
+- `<%= paramters[:tag] %>`
+
+### リリース予定日
+- <%= paramters[:release_date].strftime('%Y/%m/%d') %>(<%= date_to_wday(paramters[:release_date]) %>)
+
+## リリーススケジュール
+- <%= paramters[:release_dead_date].strftime('%m/%d') %>(<%= date_to_wday(paramters[:release_dead_date]) %>)
+  - 10:00 リリース対象PRの作成締切
+  - 13:00 リリース対象PRのマージ締切
+  - 14:00 プレビュー環境にリリース開始
+- <%= paramters[:release_date].strftime('%m/%d') %>(<%= date_to_wday(paramters[:release_date]) %>)
+  - <%= paramters[:release_date].strftime('%H:%M') %> 本番環境にリリース開始
+
+## リリース対象
+- #000
+
+## 確認観点
+- <issue_number>
+
+## マージ直前のTODO
+- [ ] リリース対象が全てマージ済みとなっていること
+- [ ] リリース対象が記載済みであること
+- [ ] 確認観点が記載済みであること
+- [ ] (プレビュー環境のみ) プレビュー環境での動作確認
