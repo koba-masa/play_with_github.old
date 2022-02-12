@@ -1,10 +1,19 @@
 pull_request_creator:
-  base_branch: main
+  base_branch:
   repositories:
-    - https://github.com/koba-masa/play_with_github
+    - koba-masa/play_with_github
+  incremented_version_pattern:
+  tag_format:
   release:
-    type: normal
-#    type: emergency
-#    type: monthly
-    date: 2022/02/09
-    time: 15:00
+    type:
+    date:
+    time:
+  pull_request:
+    merge_branch:
+    template:
+    labels:
+      - bug
+  issue:
+    template:
+    labels:
+      - bug
