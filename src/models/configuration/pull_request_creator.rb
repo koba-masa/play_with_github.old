@@ -35,8 +35,24 @@ module Configuration
       )
     end
 
-    def template
-      Settings.pull_request_creator.template
+    def pr_merge_branch
+      Settings.pull_request_creator.pull_request.merge_branch
+    end
+
+    def pr_template
+      Settings.pull_request_creator.pull_request.template
+    end
+
+    def pr_labels
+      Settings.pull_request_creator.pull_request.labels
+    end
+
+    def issue_template
+      Settings.pull_request_creator.issue.template
+    end
+
+    def issue_labels
+      Settings.pull_request_creator.issue.labels
     end
 
     def release_branch_name

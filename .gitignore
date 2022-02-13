@@ -2,7 +2,8 @@ config/credential.yml
 config/pull_request_creator/*
 !config/pull_request_creator/settings.yml.sample
 
-template/pull_request/pull_request_creator_release_branch.erb
+template/*
+!template/*/default.erb
 
 ruby/config/*.yml
 tmp/*
