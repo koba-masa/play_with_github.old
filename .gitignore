@@ -5,5 +5,7 @@ config/pull_request_creator/*
 template/*
 !template/*/default.erb
 
+shell/config
+
 ruby/config/*.yml
 tmp/*
