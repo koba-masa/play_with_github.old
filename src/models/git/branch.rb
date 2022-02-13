@@ -4,10 +4,11 @@ module Git
       @client = client
     end
 
-    def checkout!(base_branch, new_branch)
+    def checkout!(base_branch, new_branch=nil)
       client.checkout(base_branch)
       client.fetch
       client.pull
+      client.checkout(new_branch) if new_branch.nil? || new_branch.empty?
     end
 
     def commit
