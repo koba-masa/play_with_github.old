@@ -1,5 +1,6 @@
 config/credential.yml
-config/pull_request_creator/*
+config/*
+!config/branch_creator/settings.yml.sample
 !config/pull_request_creator/settings.yml.sample
 
 template/*

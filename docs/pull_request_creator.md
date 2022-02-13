@@ -13,7 +13,7 @@
 
 #### Personal access token
 
-- [必要な権限](https://docs.github.com/ja/developers/apps/building-oauth-apps/scopes-for-oauth-apps)を以下にに示す
+- [必要な権限](https://docs.github.com/ja/developers/apps/building-oauth-apps/scopes-for-oauth-apps)を以下に示す
   - `repo`
     - `repo:status`
     - `repo_deployment`
