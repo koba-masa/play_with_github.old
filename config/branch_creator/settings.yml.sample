@@ -1,0 +1,3 @@
+branch_creator:
+  repositories:
+    - tmp/repositories/play_with_github
