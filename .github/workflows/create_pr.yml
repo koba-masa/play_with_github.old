@@ -12,6 +12,7 @@ jobs:
 
     env:
       GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      BASE_BRANCH: ${{ github.event.repository.name }}
       NEW_BRANCH_NAME: "${{ github.event.inputs.new_branch_name }}"
 
     steps:
@@ -42,7 +43,7 @@ jobs:
           # https://cli.github.com/manual/gh_pr_create
           gh pr create \
             --head "${{ env.NEW_BRANCH_NAME }}" \
-            --base "${{ github.event.repository.name }}" \
+            --base "${{ env.BASE_BRANCH }}" \
             --title '自動生成PR' \
             --body ${{ steps.create_pr_body.outputs.pr_body }} \
             --label 'auto-create' \
