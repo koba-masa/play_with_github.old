@@ -2,20 +2,49 @@ name: Create PullRequest by GitHub Actions.
 on:
   workflow_dispatch:
     inputs:
-      branch_name:
-        description: 'Original branch name. If not exists, create it as a new branch.'
+      new_branch_name:
+        description: 'Input new branch name'
         required: true
-      base_branch_name:
-        description: 'Base branch name.'
-        required: true
-        default: 'main'
 
 jobs:
   create_pr:
     runs-on: ubuntu-latest
 
+    env:
+      GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      NEW_BRANCH_NAME: "${{ github.event.inputs.new_branch_name }}"
+
     steps:
       - name: Check input variables
         run: |
-          echo "branch_name: ${{ github.event.inputs.branch_name }}"
-          echo "base_branch_name: ${{ github.event.inputs.base_branch_name }}"
+          echo "branch_name: ${{ env.NEW_BRANCH_NAME }}"
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Create branch
+        run: |
+          # https://github.com/actions/checkout/blob/main/README.md#push-a-commit-using-the-built-in-token
+          git config --local user.email 'github-actions@github.com'
+          git config --local user.name 'github-actions'
+          git checkout -b "${{ env.NEW_BRANCH_NAME }}"
+          git commit -m '自動生成ブランチ' --allow-empty
+          git push origin "${{ env.NEW_BRANCH_NAME }}"
+
+      - id: create_pr_body
+        name: Crate PR Body
+        run: |
+          pr_body='sample'
+          echo "::set-output name=pr_body::${pr_body}"
+
+      - name: Create Pull Request
+        run: |
+          # https://cli.github.com/manual/gh_pr_create
+          gh pr create \
+            --head "${{ env.NEW_BRANCH_NAME }}" \
+            --base "${{ github.event.repository.name }}"
+            --title '自動生成PR' \
+            --body ${{ steps.create_pr_body.outputs.pr_body }} \
+            --label 'auto-create' \
+            --assignee @me \
+            --draft \
