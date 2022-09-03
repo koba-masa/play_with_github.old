@@ -12,7 +12,7 @@ jobs:
 
     env:
       GITHUB_TOKEN: ${{ secrets.TOKEN }}
-      BASE_BRANCH: ${{ github.event.repository.name }}
+      BASE_BRANCH: ${{ ref }}
       NEW_BRANCH_NAME: "${{ github.event.inputs.new_branch_name }}"
 
     steps:
