@@ -42,7 +42,7 @@ jobs:
           # https://cli.github.com/manual/gh_pr_create
           gh pr create \
             --head "${{ env.NEW_BRANCH_NAME }}" \
-            --base "${{ github.event.repository.name }}"
+            --base "${{ github.event.repository.name }}" \
             --title '自動生成PR' \
             --body ${{ steps.create_pr_body.outputs.pr_body }} \
             --label 'auto-create' \
