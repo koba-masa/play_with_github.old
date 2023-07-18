@@ -1,0 +1,13 @@
+name: wf_dispatch_verification
+on:
+  workflow_dispatch:
+
+jobs:
+  verification:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: check branch
+        run: |
+          # 選択したブランチ名を取得する
+          echo "Branch Name: ${GITHUB_REF#refs/heads/}"
