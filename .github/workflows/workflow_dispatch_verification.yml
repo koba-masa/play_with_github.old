@@ -1,0 +1,13 @@
+# TODO: 山中さんにdb環境を改めて構築してもらったのち、user_name, passwordを改めてシークレットとして置くようにする。
+name: wf_dispatch_verification
+on:
+  workflow_dispatch:
+
+jobs:
+  verification:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: check branch
+        run: |
+          echo "Branch Name: ${GITHUB_REF#refs/heads/}"
